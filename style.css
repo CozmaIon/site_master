@@ -318,6 +318,8 @@ main { padding: 16px 0; }
 }
 
 
+
+
 .beneficii-lista {
     list-style: none;
     margin: 0;
@@ -377,4 +379,277 @@ main { padding: 16px 0; }
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+:root {
+    --teal: #1f6f6b;
+    --crem: #fbf1dc;
+    --bej: #f8e6c4;
+    --albastru: #d9efee;
+}
+
+.resurse { margin-top: 50px; }
+
+.resurse-intro { max-width: 760px; margin-bottom: 48px; }
+
+.resurse-intro h2 {
+    margin: 0 0 20px;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #1b1b1b;
+}
+
+.resurse-intro p { margin: 0; line-height: 1.7; color: #1b1b1b; }
+
+
+.cartonase {
+    display: grid;
+    gap: 24px;
+}
+
+.rand:nth-child(even) .rand-img { order: -1; }
+
+.rand {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* două coloane egale */
+    gap: 24px;
+    align-items: stretch;
+}
+
+.flip {
+    perspective: 1200px;
+    height: 460px;               /* mai înalt, ca textul să nu fie tăiat */
+    cursor: pointer;
+    outline-offset: 6px;
+    margin: 20px;
+}
+
+.rand-img {
+    height: 460px;
+    border-radius: 32px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.rand-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+
+.face {
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    background: var(--crem);
+    border: 10px solid #e2dccb;
+    color: #1b1b1b;
+}
+
+.back { transform: rotateY(180deg); gap: 14px; }
+
+
+.front { align-items: center; text-align: center; justify-content: center; gap: 18px; }
+
+.c-eticheta {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--teal);
+    color: #fff;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.c-numar {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--teal);
+}
+
+.front h3 {
+    margin: 0;
+    padding: 18px 20px;
+    width: 100%;
+    border-radius: 20px;
+    background: var(--bej);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #0f4a47;
+}
+
+.c-hint { font-size: .9rem; color: #777; }
+
+/* ----- Fața din spate ----- */
+.c-panou { border-radius: 20px; padding: 20px 22px; }
+
+.c-panou h4 {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    background: var(--teal);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.c-panou p { margin: 0; line-height: 1.55; font-size: 1rem; }
+
+.c-inseamna { background: var(--albastru); }
+.c-exemplu  { background: var(--bej); }
+.c-exemplu p { font-style: italic; }
+
+.c-footer {
+    margin-top: auto;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: var(--teal);
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flip-inner { transition: none; }
+}
+
+@media (max-width: 800px) {
+    .rand { grid-template-columns: 1fr; }
+    .rand:nth-child(even) .rand-img { order: 0; }   /* pe mobil: cartonaș, apoi imagine */
+    .flip { height: 540px; }
+    .rand-img { height: 320px; }
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    position: relative;
+    isolation: isolate;
+    margin-top: 60px;
+    padding: 220px 24px 24px;        /* spațiul de sus lasă imaginea să se vadă */
+    border-radius: 32px;
+    overflow: hidden;
+    background: #6b4f3a url("images/pexels-max-fischer-5212329.jpg") center / cover no-repeat;
+}
+
+/* stratul întunecat, ca la hero-bg */
+footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, .55);
+}
+
+.footer-bg {
+    max-width: 1200px;
+    margin: 0 auto;                  /* panoul centrat */
+    padding: 48px;
+    background: #f8f7f2;
+    border-radius: 32px;
+    color: #1b1b1b;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1.2fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-col h4 {
+    margin: 0 0 20px;
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.footer-col .footer-sub { margin-top: 32px; }
+
+.footer-col p {
+    margin: 0 0 8px;
+    line-height: 1.6;
+}
+
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { margin-bottom: 14px; }
+
+.footer-col a {
+    color: #1b1b1b;
+    text-decoration: none;
+}
+.footer-col a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Câmpul de email cu buton în interior */
+.footer-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid #ece8dc;
+    border-radius: 999px;
+}
+
+.footer-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0 18px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font: inherit;
+}
+
+.footer-form button {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 999px;
+    background: #1b1b1b;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-jos {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #e2dccb;
+    font-size: .9rem;
+}
+
+.footer-jos p { margin: 0; }
+
+@media (max-width: 900px) {
+    footer { padding-top: 120px; }
+    .footer-panel { padding: 28px 22px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-abonare { grid-column: 1 / -1; }
+}
+
+@media (max-width: 520px) {
+    .footer-grid { grid-template-columns: 1fr; }
 }
